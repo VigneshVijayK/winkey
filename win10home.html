@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows 10 Home - Winkey</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+.buy-key-btn {
+    background: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.9em 2em;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    min-width: 7em;
+    min-height: 2.5em;
+    outline: none;
+    margin: 2rem auto 0 auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,120,212,0.10);
+}
+.buy-key-btn:hover, .buy-key-btn:focus {
+    background: #005fa3;
+    outline: 2px solid #005fa3;
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(0,120,212,0.18);
+}
+</style>
 </head>
 <body>
     <header>
@@ -67,7 +91,7 @@
                     </ul>
                     <p><strong>Delivery:</strong> Digital delivery via email within 1-12 hours</p>
                 </div>
-                <button id="buy-key-btn">Buy Key</button>
+                <button id="buy-key-btn" class="buy-key-btn">Buy Key</button>
             </div>
         </section>
     </main>

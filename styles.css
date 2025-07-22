@@ -19,6 +19,30 @@ body::before {
     -webkit-filter: blur(12px) saturate(1.2);
     pointer-events: none;
 }
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: linear-gradient(120deg, #0078d4 0%, #005fa3 100%);
+    opacity: 0.18;
+    animation: fluid-bg 12s ease-in-out infinite alternate;
+}
+@keyframes fluid-bg {
+    0% {
+        filter: blur(32px) saturate(1.2);
+        background-position: 0% 50%;
+    }
+    50% {
+        filter: blur(48px) saturate(1.4);
+        background-position: 100% 50%;
+    }
+    100% {
+        filter: blur(32px) saturate(1.2);
+        background-position: 0% 50%;
+    }
+}
 
 header {
     background: linear-gradient(90deg, rgba(0,120,212,0.85) 80%, rgba(0,95,163,0.85) 100%);
