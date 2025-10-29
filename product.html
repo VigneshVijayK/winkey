@@ -20,28 +20,60 @@
                 </span>
                 <span class="logo-separator"></span>
                 <div class="brand-text">
-                    <h1 id="product-title">Product Name</h1>
+                    <h1>Winkey</h1>
+                    <span class="tagline">Genuine Windows OS & Licenses</span>
                 </div>
             </div>
+            <nav>
+                <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="purchase-history.html">Verify Purchase</a></li>
+                </ul>
+                <ul class="mobile-menu" id="mobile-menu" hidden>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="purchase-history.html">Verify Purchase</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <main>
         <div class="container">
-            <nav aria-label="Breadcrumb" style="margin: 1rem 0 0.5rem 0;">
-                <a href="index.html" style="text-decoration: none; color: #005fa3;">← Back to Home</a>
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <a href="index.html">← Back to Home</a>
             </nav>
-            <section class="about" style="max-width: 900px;">
+            <section class="about product-panel">
                 <div class="product-details">
                     <h2 id="product-name">Product Name</h2>
                     <p id="product-description">Product description goes here.</p>
                     <span class="price" id="product-price">₹0</span>
-                    <div style="margin-top: 1rem;">
+                    <div class="product-cta">
                         <button id="buy-key-btn" class="buy-btn">Buy License</button>
                     </div>
                 </div>
             </section>
         </div>
     </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Winkey. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/918590011604" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="19" cy="19" r="19" fill="#25D366"/>
+            <path d="M27.5 21.5c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.5-.2-.7.2-.2.4-.8 1.2-1 1.4-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.2 0-.5-.1-.7-.1-.2-.7-1.7-1-2.3-.3-.6-.6-.5-.8-.5-.2 0-.5 0-.7 0-.2 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.1 0 1.8 1.4 3.5 1.6 3.7.2.2 2.7 4.2 6.6 5.7.9.3 1.6.5 2.1.6.9.1 1.7.1 2.3.1.7 0 2.3-.7 2.6-1.5.3-.8.3-1.5.2-1.6-.1-.1-.4-.2-.8-.4z" fill="#fff"/>
+        </svg>
+    </a>
+    <script src="script.js"></script>
     <script src="product.js"></script>
 </body>
 </html> 

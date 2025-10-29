@@ -19,6 +19,8 @@ body::before {
     -webkit-filter: blur(12px) saturate(1.2);
     pointer-events: none;
 }
+/* Reduce background blur when mobile menu is open to avoid artifacts */
+/* removed menu-open blur override */
 body::after {
     content: '';
     position: fixed;
@@ -29,6 +31,7 @@ body::after {
     opacity: 0.18;
     animation: fluid-bg 12s ease-in-out infinite alternate;
 }
+/* removed menu-open overflow lock */
 @keyframes fluid-bg {
     0% {
         filter: blur(32px) saturate(1.2);
@@ -52,6 +55,8 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1.5px solid rgba(255,255,255,0.18);
+    position: relative; /* create stacking context over hero */
+    z-index: 10000;
 }
 header .container {
     display: -webkit-box;
@@ -301,6 +306,88 @@ nav a:hover, nav a:focus {
     outline: 2px solid #005fa3;
 }
 
+/* Product page helpers */
+.breadcrumb {
+    margin: 1rem 0 0.5rem 0;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #005fa3;
+}
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+    text-decoration: underline;
+    color: #003f6b;
+}
+.product-panel {
+    max-width: 900px;
+}
+.product-details {
+    text-align: center;
+    padding: 0 0.5rem;
+}
+.product-details h2 {
+    margin-top: 0;
+    color: #005fa3;
+}
+.product-details p {
+    font-size: 1.05rem;
+    margin: 0.5rem auto 1rem auto;
+    max-width: 700px;
+}
+.product-sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 1.25rem auto 0 auto;
+    max-width: 900px;
+    text-align: left;
+}
+.product-block {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,120,212,0.12);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 12px rgba(0,120,212,0.08);
+}
+.product-block h3 {
+    margin: 0 0 0.5rem 0;
+    color: #005fa3;
+}
+.product-details ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.product-details li {
+    margin: 0.4rem 0;
+    position: relative;
+    padding-left: 1.4rem;
+}
+.product-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0,120,212,0.18);
+}
+.product-cta { 
+    margin-top: 1rem; 
+}
+.product-details #product-delivery {
+    margin-top: 1.2rem;
+}
+
+@media (max-width: 900px) {
+    .product-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
 footer {
     background: #005fa3;
     color: #fff;
@@ -371,15 +458,15 @@ html, body {
 /* Hide mobile menu by default */
 .mobile-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 1rem;
     background: #0078d4;
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.16);
     padding: 1rem 0;
-    min-width: 160px;
-    z-index: 1000;
+    min-width: 180px;
+    z-index: 20000;
 }
 .mobile-menu li {
     text-align: left;

@@ -275,11 +275,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const productKey = resolveProductKey(getProductFromQuery());
     const product = productKey ? products[productKey] : null;
     if (product) {
-        document.getElementById('product-title').textContent = product.name;
-        document.getElementById('product-name').textContent = product.name;
-        document.getElementById('product-description').textContent = product.description;
-        document.getElementById('product-price').textContent = product.price;
-        // Add features
+        const titleEl = document.getElementById('product-title');
+        if (titleEl) titleEl.textContent = product.name;
+        const nameEl = document.getElementById('product-name');
+        if (nameEl) nameEl.textContent = product.name;
+        const descEl = document.getElementById('product-description');
+        if (descEl) descEl.textContent = product.description;
+        const priceEl = document.getElementById('product-price');
+        if (priceEl) priceEl.textContent = product.price;
+        const detailsRoot = document.querySelector('.product-details');
+        // Build a two-column section for Features and Requirements
+        const sections = document.createElement('div');
+        sections.className = 'product-sections';
+
+        // Features block
+        const featuresBlock = document.createElement('section');
+        featuresBlock.className = 'product-block';
+        const featuresHeader = document.createElement('h3');
+        featuresHeader.textContent = 'Features';
         const featuresList = document.createElement('ul');
         featuresList.id = 'product-features';
         product.features.forEach(f => {
@@ -287,9 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = f;
             featuresList.appendChild(li);
         });
-        document.querySelector('.product-details').appendChild(document.createElement('h3')).textContent = 'Features';
-        document.querySelector('.product-details').appendChild(featuresList);
-        // Add requirements
+        featuresBlock.appendChild(featuresHeader);
+        featuresBlock.appendChild(featuresList);
+
+        // Requirements block
+        const reqBlock = document.createElement('section');
+        reqBlock.className = 'product-block';
+        const reqHeader = document.createElement('h3');
+        reqHeader.textContent = 'System Requirements';
         const reqList = document.createElement('ul');
         reqList.id = 'product-requirements';
         product.requirements.forEach(r => {
@@ -297,15 +315,26 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = r;
             reqList.appendChild(li);
         });
-        document.querySelector('.product-details').appendChild(document.createElement('h3')).textContent = 'System Requirements';
-        document.querySelector('.product-details').appendChild(reqList);
+        reqBlock.appendChild(reqHeader);
+        reqBlock.appendChild(reqList);
+
+        // Append blocks to sections
+        sections.appendChild(featuresBlock);
+        sections.appendChild(reqBlock);
+
+        if (detailsRoot) {
+            detailsRoot.appendChild(sections);
+        }
+
         // Add delivery method
         const delivery = document.createElement('p');
         delivery.id = 'product-delivery';
         delivery.innerHTML = `<strong>Delivery:</strong> ${product.delivery}`;
-        document.querySelector('.product-details').appendChild(delivery);
+        if (detailsRoot) {
+            detailsRoot.appendChild(delivery);
+        }
         document.getElementById('buy-key-btn').addEventListener('click', () => {
-            window.open(product.whatsapp, '_blank');
+            window.location.href = 'https://form.svhrt.com/687b6deef6e31c71589b7531';
         });
     } else {
         document.querySelector('.product-details').innerHTML = '<p>Product not found.</p>';
