@@ -9,17 +9,37 @@
 <body>
     <header>
         <div class="container">
-            <h1 id="product-title">Product Name</h1>
+            <div class="logo-heading">
+                <span class="windows-logo" aria-label="Windows logo" role="img">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="5" width="13" height="10" fill="#fff"/>
+                        <rect x="1" y="17" width="13" height="10" fill="#fff"/>
+                        <rect x="16" y="3" width="15" height="12" fill="#fff"/>
+                        <rect x="16" y="17" width="15" height="12" fill="#fff"/>
+                    </svg>
+                </span>
+                <span class="logo-separator"></span>
+                <div class="brand-text">
+                    <h1 id="product-title">Product Name</h1>
+                </div>
+            </div>
         </div>
     </header>
     <main>
         <div class="container">
-            <div class="product-details">
-                <h2 id="product-name">Product Name</h2>
-                <p id="product-description">Product description goes here.</p>
-                <span class="price" id="product-price">₹0</span>
-            </div>
-            <button id="buy-key-btn">Buy Key</button>
+            <nav aria-label="Breadcrumb" style="margin: 1rem 0 0.5rem 0;">
+                <a href="index.html" style="text-decoration: none; color: #005fa3;">← Back to Home</a>
+            </nav>
+            <section class="about" style="max-width: 900px;">
+                <div class="product-details">
+                    <h2 id="product-name">Product Name</h2>
+                    <p id="product-description">Product description goes here.</p>
+                    <span class="price" id="product-price">₹0</span>
+                    <div style="margin-top: 1rem;">
+                        <button id="buy-key-btn" class="buy-btn">Buy License</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     <script src="product.js"></script>

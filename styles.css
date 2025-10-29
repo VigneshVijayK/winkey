@@ -176,6 +176,8 @@ nav a:hover, nav a:focus {
     border: 1.5px solid rgba(0,120,212,0.10);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
 }
 .product-card:hover, .product-card:focus-within {
     box-shadow: 0 8px 32px rgba(0,120,212,0.18);
@@ -238,6 +240,8 @@ nav a:hover, nav a:focus {
     border: 1.5px solid rgba(0,120,212,0.08);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    position: relative;
+    overflow: hidden;
 }
 .about h3, .contact h3 {
     color: #0078d4;
@@ -554,3 +558,96 @@ html, body {
         height: 26px;
     }
 } 
+
+/* Liquid glass sheen and fluid border for cards and panels */
+.product-card::before,
+.about::before,
+.contact::before {
+	content: '';
+	position: absolute;
+	top: -40%;
+	left: -40%;
+	width: 180%;
+	height: 180%;
+	background: radial-gradient( circle at 20% 20%, rgba(255,255,255,0.55), rgba(255,255,255,0.15) 35%, rgba(255,255,255,0.04) 55%, transparent 70% );
+	transform: rotate(15deg) translate3d(0,0,0);
+	filter: blur(2px) saturate(1.05);
+	opacity: .9;
+	pointer-events: none;
+	transition: opacity .3s ease;
+}
+.product-card::after,
+.about::after,
+.contact::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px; /* border thickness */
+	background: conic-gradient(from 180deg at 50% 50%, rgba(0,120,212,.35), rgba(255,255,255,.35), rgba(0,95,163,.35), rgba(0,120,212,.35));
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: .55;
+	pointer-events: none;
+}
+.product-card:hover::before,
+.product-card:focus-within::before,
+.about:hover::before,
+.about:focus-within::before,
+.contact:hover::before,
+.contact:focus-within::before {
+	opacity: 1;
+	animation: liquid-sheen 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes liquid-sheen {
+	0% { transform: rotate(15deg) translateX(-2%); filter: blur(2px) saturate(1.05); }
+	50% { transform: rotate(15deg) translateX(2%); filter: blur(3px) saturate(1.1); }
+	100% { transform: rotate(15deg) translateX(-2%); filter: blur(2px) saturate(1.05); }
+}
+
+/* Fluid blob in hero background */
+.hero {
+	position: relative;
+}
+.hero::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 55%;
+	width: 780px;
+	height: 780px;
+	transform: translate(-50%, -50%);
+	background:
+		radial-gradient( 35% 35% at 30% 30%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 60% ),
+		radial-gradient( 45% 45% at 70% 60%, rgba(0,120,212,.45) 0%, rgba(0,120,212,0) 70% ),
+		radial-gradient( 55% 55% at 40% 70%, rgba(0,95,163,.35) 0%, rgba(0,95,163,0) 70% );
+	filter: blur(40px) saturate(1.15);
+	border-radius: 50% 60% 45% 55% / 55% 45% 60% 50%;
+	opacity: .35;
+	animation: blob-morph 16s ease-in-out infinite;
+	pointer-events: none;
+	z-index: 0;
+}
+@keyframes blob-morph {
+	0% { border-radius: 50% 60% 45% 55% / 55% 45% 60% 50%; transform: translate(-50%, -50%) scale(1); }
+	50% { border-radius: 60% 45% 55% 45% / 45% 55% 50% 60%; transform: translate(-50%, -52%) scale(1.04); }
+	100% { border-radius: 50% 60% 45% 55% / 55% 45% 60% 50%; transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (max-width: 900px) {
+	.hero::before {
+		width: 520px;
+		height: 520px;
+		filter: blur(34px) saturate(1.1);
+	}
+}
+
+@media (max-width: 600px) {
+	.hero::before {
+		width: 380px;
+		height: 380px;
+		filter: blur(28px) saturate(1.05);
+	}
+}
